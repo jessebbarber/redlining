@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Redlining</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
+<style>
+    body { margin: 0; padding: 0; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        h4 {
+          font-size: 1em;
+          text-align: left;
+          line-height: 18px; 
+          padding-bottom: 5px;
+          margin-top: 0px;
+          margin-bottom: 5px;
+        }
+    #legend {
+          padding: 10px;
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+          line-height: 12px;
+          height: 110px;
+          margin-bottom: 20px;
+          width: 185px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(0,0,0);
+          border-radius: 3px;
+          overflow: hidden;
+          font-size: 14px;
+        }
+    .map-overlay {
+          background: white;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          margin-right: 20px;
+          font-family: Arial, sans-serif;
+          overflow: hidden;
+          box-shadow: 3px 5px;
+          vertical-align: middle;
+
+    }
+
+    .map-overlay div span {
+            border-radius: 0px;
+            outline-style: solid;
+            outline-color: black;
+            outline-width: .1px;
+            display: inline-block;
+            height: 20px;
+            margin-right: 10px;
+            width: 20px;
+            vertical-align: middle;
+            font-size: 12px;
+        }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id='legend' class='map-overlay'>
+    <h4><strong>HOLC Grades</strong></h4>
+    <div><span style='background-color: #76a865'></span>A - "Best"</div>
+    <div><span style='background-color: #7cb5bd'></span>B - "Still Desirable"</div>
+    <div><span style='background-color: #feff04'></span>C - "Definitely Declining"</div>
+    <div><span style='background-color: #d9838d'></span>D - "Hazardous"</div>
+</div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiamVzc2ViYXJiZXIiLCJhIjoiY2pvNjBicmU5MGU0MzNrb2I3aG02OWthciJ9.czMAn4iRicWIeUrok9O7NQ';
+var map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'mapbox://styles/jessebarber/ckbtfc53x0izv1ipky790cgmv', //hosted style id
+center: [-122.273, 37.876], // starting position
+zoom: 12.3 // starting zoom
+});
+
+  map.getCanvas().style.cursor = 'default';
+  var nav = new mapboxgl.NavigationControl();
+  map.addControl(nav, 'top-left');
+  map.addControl(new mapboxgl.ScaleControl({position: 'bottom-left'}));
+
+</script>
+ 
+</body>
+</html>
